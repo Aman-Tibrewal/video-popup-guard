@@ -3,3 +3,4 @@
 recon-*.json
 *.pem
 *.crx
+store/*.zip

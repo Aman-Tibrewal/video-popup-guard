@@ -17,6 +17,7 @@ It doesn't block any network requests, so ad-blocker detection has nothing to no
 |---|---|
 | [`blocker/`](blocker/) | The extension itself. See [blocker/README.md](blocker/README.md) for usage. |
 | [`recon/`](recon/) | Diagnostic recorder used to study how a site's pop-ups work. Observes only; blocks nothing. See [recon/README.md](recon/README.md). |
+| [`store/`](store/) | Chrome Web Store submission kit: listing text and permission justifications ([LISTING.md](store/LISTING.md)), privacy policy ([PRIVACY.md](store/PRIVACY.md)), icon source, screenshots and promo tile. |
 
 ## Install
 

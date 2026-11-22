@@ -10,7 +10,7 @@ Copy each section into the matching field of the Chrome Web Store Developer Dash
 | `store-icon-128.png` | **Store listing** → Store icon |
 | `screenshot-1-1280x800.png`, `screenshot-2-1280x800.png` | **Store listing** → Screenshots |
 | `promo-tile-440x280.png` | **Store listing** → Small promo tile |
-| `PRIVACY.md` | Publish somewhere public, then paste its link under **Privacy** → Privacy policy URL |
+| `PRIVACY.md` | Already public in the repo; paste its link (below) under **Privacy** → Privacy policy URL |
 
 ---
 
@@ -76,7 +76,10 @@ Works in Chrome, Opera, Edge and Brave.
 - I do not use or transfer user data for purposes that are unrelated to my item's single purpose.
 - I do not use or transfer user data to determine creditworthiness or for lending purposes.
 
-**Privacy policy URL:** the public link to `PRIVACY.md` (see below).
+**Privacy policy URL:**
+```
+https://github.com/Aman-Tibrewal/video-popup-guard/blob/main/store/PRIVACY.md
+```
 
 ---
 

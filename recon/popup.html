@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  :root { --bg:#fff; --fg:#1d1d1f; --muted:#6e6e73; --line:#e5e5ea; --accent:#d9342b; --btn:#f2f2f7; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#1c1c1e; --fg:#f5f5f7; --muted:#98989d; --line:#38383a; --accent:#ff453a; --btn:#2c2c2e; } }
+  body { margin:0; width:300px; font:13px/1.4 -apple-system, BlinkMacSystemFont, sans-serif; background:var(--bg); color:var(--fg); }
+  main { padding:14px; display:flex; flex-direction:column; gap:10px; }
+  h1 { font-size:14px; margin:0; display:flex; align-items:center; gap:6px; }
+  .dot { width:8px; height:8px; border-radius:50%; background:var(--muted); }
+  .dot.rec { background:var(--accent); animation:pulse 1.2s infinite; }
+  @keyframes pulse { 50% { opacity:.3; } }
+  .muted { color:var(--muted); font-size:12px; }
+  .stats { display:grid; grid-template-columns:1fr auto; gap:2px 8px; padding:8px 10px; border:1px solid var(--line); border-radius:8px; }
+  button { font:inherit; padding:7px 10px; border-radius:7px; border:1px solid var(--line); background:var(--btn); color:var(--fg); cursor:pointer; }
+  button.primary { background:var(--accent); color:#fff; border-color:transparent; }
+  .row { display:flex; gap:6px; }
+  .row > * { flex:1; }
+  input { font:inherit; padding:6px 8px; border-radius:7px; border:1px solid var(--line); background:var(--bg); color:var(--fg); }
+  [hidden] { display:none !important; }
+</style>
+</head>
+<body>
+<main>
+  <h1><span id="dot" class="dot"></span><span id="title">Popup Recon</span></h1>
+  <div id="sub" class="muted"></div>
+
+  <div id="stats" class="stats" hidden></div>
+
+  <button id="start" class="primary" hidden>Start recording on this tab</button>
+  <div id="startNote" class="muted" hidden>Start on the site's home or listing page, then click into a video. Starting clears any previous recording.</div>
+
+  <div id="recControls" hidden>
+    <div class="row" style="margin-bottom:6px">
+      <input id="note" placeholder="Note, e.g. keyboard stopped working">
+    </div>
+    <div class="row">
+      <button id="addNote">Add note</button>
+      <button id="snap">Snapshot</button>
+      <button id="stop">Stop</button>
+    </div>
+  </div>
+
+  <button id="closePopups">Close all pop-up windows &amp; ad tabs</button>
+
+  <div class="row">
+    <button id="export" hidden>Export report</button>
+    <button id="clear" hidden>Clear</button>
+  </div>
+  <div id="msg" class="muted"></div>
+</main>
+<script src="popup.js"></script>
+</body>
+</html>

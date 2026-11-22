@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "Popup Recon",
+  "version": "0.2.0",
+  "description": "Diagnostic only: records how a page opens pop-ups and steals clicks, keys and focus. Blocks nothing.",
+  "permissions": ["tabs", "webNavigation", "storage", "unlimitedStorage", "scripting"],
+  "host_permissions": ["<all_urls>"],
+  "background": { "service_worker": "background.js" },
+  "action": { "default_popup": "popup.html", "default_title": "Popup Recon" },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content-bridge.js"],
+      "run_at": "document_start",
+      "all_frames": true,
+      "match_origin_as_fallback": true
+    }
+  ]
+}

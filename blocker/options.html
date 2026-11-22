@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Domain redirects</title>
+<style>
+  :root { --bg:#f5f5f7; --panel:#fff; --fg:#1d1d1f; --muted:#6e6e73; --line:#e0e0e5; --on:#15803d; --track:#d1d1d6; --btn:#f2f2f7; --err:#c2410c; --chip:#eef2ff; --chipfg:#1e3a8a; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#111113; --panel:#1c1c1e; --fg:#f5f5f7; --muted:#98989d; --line:#38383a; --on:#30d158; --track:#48484a; --btn:#2c2c2e; --err:#ff9f0a; --chip:#1e2a4a; --chipfg:#c7d2fe; } }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg); font:14px/1.45 -apple-system, BlinkMacSystemFont, sans-serif; }
+  main { max-width:720px; margin:0 auto; padding:32px 16px 64px; }
+  h1 { font-size:22px; margin:0 0 4px; }
+  .muted { color:var(--muted); }
+  .master { margin:20px 0; background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:14px 16px; display:flex; gap:16px; align-items:center; justify-content:space-between; }
+  .master strong { display:block; }
+  .switch { flex:none; position:relative; width:46px; height:28px; border-radius:14px; background:var(--track); border:0; cursor:pointer; transition:background .15s; }
+  .switch::after { content:''; position:absolute; top:3px; left:3px; width:22px; height:22px; border-radius:50%; background:#fff; box-shadow:0 1px 2px rgba(0,0,0,.3); transition:left .15s; }
+  .switch[aria-checked="true"] { background:var(--on); }
+  .switch[aria-checked="true"]::after { left:21px; }
+  .switch.sm { width:38px; height:22px; }
+  .switch.sm::after { width:16px; height:16px; }
+  .switch.sm[aria-checked="true"]::after { left:19px; }
+  #list { display:flex; flex-direction:column; gap:12px; transition:opacity .15s; }
+  #list.dim { opacity:.5; }
+  .card { background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:14px 16px; display:flex; flex-direction:column; gap:10px; }
+  .card.off .body { opacity:.55; }
+  .row { display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+  .target { flex:1; display:flex; gap:8px; align-items:center; min-width:220px; font-weight:600; }
+  input { font:inherit; padding:7px 10px; border-radius:8px; border:1px solid var(--line); background:var(--bg); color:var(--fg); min-width:0; }
+  .target input { flex:1; font-weight:500; }
+  .add input { flex:1; min-width:200px; }
+  button.act { font:inherit; padding:7px 12px; border-radius:8px; border:1px solid var(--line); background:var(--btn); color:var(--fg); cursor:pointer; }
+  button.del { color:var(--err); }
+  button.primary { background:var(--on); color:#fff; border-color:transparent; }
+  .label { font-size:12px; color:var(--muted); text-transform:uppercase; letter-spacing:.04em; }
+  .chips { display:flex; flex-wrap:wrap; gap:6px; }
+  .chip { display:inline-flex; align-items:center; gap:4px; background:var(--chip); color:var(--chipfg); border-radius:999px; padding:3px 4px 3px 10px; font-size:13px; }
+  .chip button { border:0; background:transparent; color:inherit; cursor:pointer; font-size:15px; line-height:1; padding:0 6px; border-radius:999px; }
+  .chip button:hover { background:rgba(0,0,0,.08); }
+  .errs { margin:0; padding-left:18px; color:var(--err); font-size:13px; }
+  .errs:empty { display:none; }
+  .empty { text-align:center; padding:24px; }
+  .foot { margin-top:16px; display:flex; gap:12px; align-items:center; justify-content:space-between; flex-wrap:wrap; }
+  #saved { color:var(--on); font-size:13px; min-height:1em; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Domain redirects</h1>
+  <div class="muted">When a site embeds a video player from a domain that has gone offline, load the same video from a working domain instead. The video's address stays the same; only the domain changes.</div>
+
+  <div class="master">
+    <div>
+      <strong>Redirect dead player domains</strong>
+      <span class="muted">Turn off to rely on the website as it is.</span>
+    </div>
+    <button id="master" class="switch" role="switch" aria-checked="true" aria-label="Redirect dead player domains"></button>
+  </div>
+
+  <div id="list"></div>
+
+  <div class="foot">
+    <button id="addMapping" class="act primary">Add redirect</button>
+    <span id="saved"></span>
+  </div>
+  <p class="muted">Changes apply to pages you open or reload afterwards. This works separately from the pop-up switch.</p>
+</main>
+<script src="redirect-rules.js"></script>
+<script src="options.js"></script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  :root { --bg:#fff; --fg:#1d1d1f; --muted:#6e6e73; --line:#e5e5ea; --on:#15803d; --btn:#f2f2f7; --track:#d1d1d6; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#1c1c1e; --fg:#f5f5f7; --muted:#98989d; --line:#38383a; --on:#30d158; --btn:#2c2c2e; --track:#48484a; } }
+  body { margin:0; width:290px; font:13px/1.4 -apple-system, BlinkMacSystemFont, sans-serif; background:var(--bg); color:var(--fg); }
+  main { padding:14px; display:flex; flex-direction:column; gap:12px; }
+  .head { display:flex; align-items:center; justify-content:space-between; }
+  h1 { font-size:15px; margin:0; }
+  .muted { color:var(--muted); font-size:12px; }
+  .switch { position:relative; width:46px; height:28px; border-radius:14px; background:var(--track); border:0; cursor:pointer; transition:background .15s; }
+  .switch::after { content:''; position:absolute; top:3px; left:3px; width:22px; height:22px; border-radius:50%; background:#fff; box-shadow:0 1px 2px rgba(0,0,0,.3); transition:left .15s; }
+  .switch[aria-checked="true"] { background:var(--on); }
+  .switch[aria-checked="true"]::after { left:21px; }
+  .card { border:1px solid var(--line); border-radius:8px; padding:8px 10px; display:grid; grid-template-columns:1fr auto; gap:2px 8px; }
+  .card .total { font-weight:600; }
+  button.act { font:inherit; padding:7px 10px; border-radius:7px; border:1px solid var(--line); background:var(--btn); color:var(--fg); cursor:pointer; }
+  .keys { display:grid; grid-template-columns:auto 1fr; gap:2px 10px; font-size:12px; }
+  kbd { font:11px ui-monospace, monospace; border:1px solid var(--line); border-radius:4px; padding:0 4px; }
+  .redir { border-top:1px solid var(--line); padding-top:12px; gap:10px; }
+  [hidden] { display:none !important; }
+</style>
+</head>
+<body>
+<main>
+  <div class="head">
+    <div>
+      <h1>Video Popup Guard</h1>
+      <div id="status" class="muted"></div>
+    </div>
+    <button id="switch" class="switch" role="switch" aria-checked="false" aria-label="Protection"></button>
+  </div>
+
+  <div id="reloadHint" class="muted" hidden>Reload the video page so protection applies to it.</div>
+  <button id="reload" class="act" hidden>Reload this tab</button>
+
+  <div id="counts" class="card" hidden></div>
+
+  <button id="closePopups" class="act">Close all pop-up windows</button>
+
+  <div class="head redir">
+    <div>
+      <strong>Fix dead player domains</strong>
+      <div id="redirSummary" class="muted"></div>
+    </div>
+    <button id="redirSwitch" class="switch" role="switch" aria-checked="false" aria-label="Fix dead player domains"></button>
+  </div>
+  <button id="manage" class="act">Manage domain redirects</button>
+
+  <div class="keys" id="keys">
+    <span><kbd>Space</kbd> <kbd>K</kbd></span><span>Play / pause</span>
+    <span><kbd>←</kbd> <kbd>→</kbd></span><span>Back / forward 10 s</span>
+    <span><kbd>↑</kbd> <kbd>↓</kbd></span><span>Volume</span>
+    <span><kbd>F</kbd></span><span>Full screen</span>
+    <span><kbd>M</kbd></span><span>Mute</span>
+  </div>
+  <div id="msg" class="muted"></div>
+</main>
+<script src="popup.js"></script>
+</body>
+</html>

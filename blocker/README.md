@@ -4,6 +4,8 @@ Stops pop-ups, invisible click-stealing layers, and ad redirects on video sites.
 
 ## Install in Opera
 
+Easiest: install it from the [Chrome Web Store](https://chrome.google.com/webstore/detail/fphbngkodgacpbpjooejeccpcaloplcf). The steps below are for running your own copy of the code.
+
 1. Go to `opera://extensions`.
 2. **Remove Popup Recon** (the two shouldn't run together).
 3. Make sure **Developer mode** is on, click **Load unpacked**, and select this `blocker` folder.

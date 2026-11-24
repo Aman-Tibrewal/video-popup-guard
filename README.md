@@ -21,9 +21,19 @@ It doesn't block any network requests, so ad-blocker detection has nothing to no
 
 ## Install
 
+**From the Chrome Web Store (recommended):**
+[Video Popup Guard on the Chrome Web Store](https://chrome.google.com/webstore/detail/fphbngkodgacpbpjooejeccpcaloplcf)
+
+- **Chrome, Edge, Brave:** open the link and click **Add to Chrome**.
+- **Opera:** open the link, allow **Install Chrome Extensions** when Opera asks, then click **Add to Opera**.
+
+Updates install automatically.
+
+**From source (for development):**
+
 1. Download or clone this repository.
 2. Open `opera://extensions` (or `chrome://extensions`).
 3. Turn on **Developer mode** and click **Load unpacked**.
 4. Select the `blocker` folder.
 
-Run only one of `blocker` and `recon` at a time.
+Don't run the store version and the unpacked version at the same time, and run only one of `blocker` and `recon`.
